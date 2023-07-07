@@ -85,7 +85,7 @@ def teardown_request(exception):
 # Homepage route
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('/templates/index.html')
 
 # Flight search route
 @app.route('/search', methods=['POST'])
@@ -182,7 +182,7 @@ def bookings():
                   JOIN flights f ON b.flight_id = f.id''')
     bookings = c.fetchall()
 
-    return render_template('bookings.html', bookings=bookings)
+    return render_template('/templates/bookings.html', bookings=bookings)
 
 # Clear bookings route
 @app.route('/clear_bookings', methods=['POST'])
@@ -193,7 +193,7 @@ def clear_bookings():
     c.execute('DROP TABLE bookings')
     conn.commit()
 
-    return redirect('/bookings')
+    return redirect('/templates/bookings.html')
 
 
 # User login route
