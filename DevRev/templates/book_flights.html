@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Book Flights</title>
+    <style>
+        /* Add your custom CSS styles here */
+    </style>
+</head>
+<body bgcolor="skyblue">
+    <center><h1>Welcome to Flight Ticket Booking</h1></center>
+    <br><br>
+    <center>
+    <form action="/search" method="post">
+        <label for="source">Source:</label><br>
+        <input type="text" name="source" id="source" required>
+        <br><br>
+
+        <label for="destination">Destination:</label><br>
+        <input type="text" name="destination" id="destination" required>
+        <br><br>
+        
+        <label for="date">Date:</label><br>
+        <input type="date" name="date" id="date" required>
+        <br><br>
+
+        <input type="submit" value="Search">
+    </form>
+    </center>
+    <hr style = "height:30px; background-color: gray;">
+    <br><br>
+    <p align = 'center'>
+    <button onclick="redirectToBookings()" >View Bookings</button>
+    </p>
+    <p align = 'right'>
+        <button onclick="window.location.href='/'">Go Back</button>
+    </p>
+    <script>
+        function redirectToBookings() {
+            window.location.replace('/bookings');
+        }
+    </script>
+</body>
+</html>

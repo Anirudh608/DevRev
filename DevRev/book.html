@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Book Flight</title>
+    <style>
+        /* Add your custom CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Book Flight</h1>
+    <h3>{{ flight[1] }} to {{ flight[2] }}</h3>
+    <p>Date: {{ flight[3] }}</p>
+    <p>Price: ${{ flight[4] }}</p>
+    <form action="/book/{{ flight[0] }}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+        <br>
+        <label for="phone">Phone:</label>
+        <input type="text" name="phone" id="phone" required>
+        <br>
+        <input type="submit" value="Book Now">
+    </form>
+    <hr style = "height:30px; background-color: gray;">
+    <br>
+    <p>
+        <button onclick="window.location.href='/'">Go to Homepage</button>
+    </p>
+</body>
+</html>

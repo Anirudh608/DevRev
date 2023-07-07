@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bookings</title>
+    <style>
+        table {
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 20px;
+            height: 100%;
+            table-layout: fixed;
+        }
+  
+        td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body bgcolor="skyblue">
+    <h1 align = "center">Bookings</h1>
+    <!-- Display the booking history -->
+    {% if bookings %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Flight</th>
+                <th>Date</th>
+                <th>Passenger Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking[0] }}</td>
+                    <td>{{ booking[1] }} to {{ booking[2] }}</td>
+                    <td>{{ booking[3] }}</td>
+                    <td>{{ booking[5] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p align = "center">No bookings found.</p>
+    {% endif %}
+    <br>
+    <br>
+    <hr style="height: 30px; background-color: gray;">
+    <br>
+    <br>
+    <!-- Button to clear booking history -->
+    <form action="/clear_bookings" method="post" align = "center">
+        <button type="submit">Clear Booking History</button>
+        
+    </form>
+    <p align = "center">
+        <button onclick="window.location.href='/book_flights'">Book flight</button>
+    </p>
+    
+
+</body>
+</html>

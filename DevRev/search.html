@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Search Results</title>
+    <style>
+        /* Add your custom CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Search Results</h1>
+    {% if results %}
+        <table>
+            <tr>
+                <th>Destination</th>
+                <th>Departure</th>
+                <th>Date</th>
+                <th>Price</th>
+                <th>Book</th>
+            </tr>
+            {% for result in results %}
+                <tr>
+                    <td>{{ result[1] }}</td>
+                    <td>{{ result[2] }}</td>
+                    <td>{{ result[3] }}</td>
+                    <td>{{ result[4] }}</td>
+                    <td><a href="/book/{{ result[0] }}">Book Now</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No flights found.</p>
+    {% endif %}
+</body>
+</html>

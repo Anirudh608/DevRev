@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <style>
+        /* Add your custom CSS styles here */
+    </style>
+</head>
+<body bgcolor="skyblue">
+    <h1 align = "center">Login</h1>
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    <form action="/login" method="post" align = "center">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required>
+        <br><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+        <br><br>
+        <input type="submit" value="Login">
+    </form>
+    <p align = "center">Don't have an account? <a href="/signup"><button>Sign up</button></a></p>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Add Flights</title>
+    <style>
+        /* Add your custom CSS styles here */
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function removeFlight(flightId) {
+            if (confirm("Are you sure you want to remove this flight?")) {
+                $.ajax({
+                    url: "/remove_flight/" + flightId,
+                    type: "DELETE",
+                    success: function(response) {
+                        location.reload();  // Refresh the page after successful removal
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            }
+        }
+    </script>
+</head>
+<body bgcolor="lightgreen">
+    <h1 align = 'center'>Add Flights</h1>
+    {% if message %}
+        <div class="success-message">{{ message }}</div>
+    {% endif %}
+    <center>
+    <form action="/add_flights" method="post">
+        <label for="source">Source:</label>
+        <input type="text" name="source" id="source" required>
+        <br><br>
+        <label for="destination">Destination:</label>
+        <input type="text" name="destination" id="destination" required>
+        <br><br>
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date" required>
+        <br><br>
+        <label for="price">Price:</label>
+        <input type="text" name="price" id="price" required>
+        <br><br>
+        <input type="submit" value="Add Flight">
+    </form>
+</center>
+    <br><br>
+    <br><br>
+    <hr style = "height:30px; background-color: gray;">
+    <h2 align = 'center'>Available Flights</h2>
+    {% for flight in flights %}
+        <div align = 'center'>
+            <span>{{ flight[2] }} to {{ flight[1] }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date : {{ flight[3] }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price : ${{ flight[4] }}</span>
+            
+            <form action="/remove_flight/{{ flight[0] }}" method="post">
+                <button type="submit">Remove</button>
+            </form>
+
+        </div>
+    {% endfor %}
+    <br><br>
+    <br><br>
+ 
+    <hr style = "height:30px; background-color: gray;">
+    <br>
+    <p align = 'right'>
+        <button onclick="window.location.href='/'">Go to Homepage</button>
+    </p>
+</body>
+</html>

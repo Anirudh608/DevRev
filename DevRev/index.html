@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Flight Booking</title>
+    <style>
+        /* Add your custom CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Flight Booking</h1>
+    <a href="/add_flights"><button>Add Flights</button></a>
+    <a href="/book"><button>Book Flights</button></a>
+    <br><br>
+    <h2>Available Flights</h2>
+    {% for flight in flights %}
+        <div>
+            <span>{{ flight[1] }} to {{ flight[2] }} - Date: {{ flight[3] }} - Price: ${{ flight[4] }}</span>
+        </div>
+    {% endfor %}
+</body>
+</html>
